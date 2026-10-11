@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#4053b3">
+<title>GAMER BD STORE</title>
+<style>
+:root{--bg:#0d1423;--panel:#172136;--panel2:#202e49;--line:#2d3b58;--blue:#4053b3;--yellow:#ffc400;--text:#f5f7fb;--muted:#aab5c8}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px system-ui,-apple-system,"Noto Sans Bengali",sans-serif;padding-bottom:82px}
+header{background:var(--blue);padding:20px 18px;font-size:20px;font-weight:700;position:sticky;top:0;z-index:3}
+.wrap{max-width:760px;margin:auto;padding:18px 14px}.brand{display:flex;justify-content:space-between;align-items:center;padding:16px 2px;border-bottom:1px solid var(--line);margin-bottom:18px}.brand strong{font-size:23px}.brand span{color:var(--yellow)}button{border:0;border-radius:13px;padding:13px 15px;font-size:15px;font-weight:700;cursor:pointer;background:var(--yellow);color:#161a24}.secondary{background:var(--panel2);color:var(--text);border:1px solid var(--line)}input,textarea,select{width:100%;padding:14px;border-radius:12px;border:1px solid var(--line);background:#0e1727;color:var(--text);font:inherit;margin:6px 0 12px}.hero,.card,.notice,.modalbox{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:16px}.hero h1{margin:4px 0 8px;font-size:25px}.muted{color:var(--muted);line-height:1.7}.pill{display:inline-block;background:var(--panel2);padding:6px 10px;border-radius:30px;color:#dbe3f2;font-size:13px;margin:3px}.products{display:grid;grid-template-columns:1fr 1fr;gap:12px}.product{overflow:hidden;background:var(--panel);border:1px solid var(--line);border-radius:16px}.product .art{height:118px;display:grid;place-items:center;font-size:46px;background:linear-gradient(135deg,#243d66,#101827)}.product .info{padding:12px}.price{color:var(--yellow);font-size:20px;font-weight:800}.product h3{font-size:16px;margin:0 0 7px}.product button{width:100%;margin-top:10px}.bottom{position:fixed;bottom:0;left:0;right:0;display:flex;justify-content:space-around;background:#111a2b;border-top:1px solid var(--line);padding:9px 2px calc(9px + env(safe-area-inset-bottom));z-index:5}.bottom button{background:transparent;color:var(--muted);font-size:12px;padding:5px;display:grid;gap:3px;justify-items:center}.bottom button b{font-size:21px}.bottom button.active{color:var(--yellow)}.hidden{display:none!important}.row{display:flex;gap:10px}.row>*{flex:1}.modal{position:fixed;inset:0;background:#000b;display:flex;align-items:center;justify-content:center;padding:18px;z-index:10}.modalbox{width:100%;max-width:520px;max-height:88vh;overflow:auto;margin:0}.topline{display:flex;justify-content:space-between;align-items:center}.topline h2{font-size:21px}.close{background:var(--panel2);color:white;padding:7px 12px}.full{width:100%}small{color:var(--muted)}@media(min-width:600px){.products{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<header>GAMER BD STORE</header>
+<main class="wrap">
+<div class="brand"><strong>GAMER <span>BD STORE</span></strong><button class="secondary" onclick="show('notices')">🔔</button></div>
+<section id="home">
+<div class="hero"><h1>🔥 Free Fire ID Store</h1><div class="muted">Premium Free Fire ID দেখুন, বিস্তারিত যাচাই করুন এবং আপনার পছন্দের ID অর্ডার করুন।</div><p><span class="pill">🔒 নিরাপদ অ্যাকাউন্ট</span><span class="pill">📱 মোবাইল-ফ্রেন্ডলি</span></p></div>
+<input id="search" placeholder="🔎 ID, Title বা UID Search..." oninput="filterProducts()">
+<div class="products" id="products"></div>
+</section>
+<section id="notices" class="hidden"><h2>📢 Notices / নোটিশ</h2><div class="notice"><b>🔥 GAMER BD STORE</b><p class="muted">স্বাগতম! অর্ডার করার আগে ID-এর সব তথ্য যাচাই করুন। এই প্রাথমিক ডেমোতে পেমেন্ট করবেন না।</p></div></section>
+<section id="orders" class="hidden"><h2>🛒 My Orders / আমার অর্ডার</h2><div id="orderlist" class="card muted">এখনও কোনো ডেমো অর্ডার নেই।</div></section>
+<section id="support" class="hidden"><h2>💬 Customer Support</h2><div class="card"><textarea id="message" placeholder="আপনার সমস্যা বা প্রশ্ন লিখুন..."></textarea><button class="full" onclick="sendMessage()">Send Message / মেসেজ পাঠান</button><p id="supportmsg" class="muted"></p></div></section>
+<section id="profile" class="hidden"><h2>👤 Profile / প্রোফাইল</h2><div class="card"><p class="muted">এই প্রোটোটাইপে অ্যাকাউন্ট তৈরি/লগইন চালু নয়। আসল লগইন পরের ধাপে নিরাপদ ডেটাবেস দিয়ে যুক্ত হবে।</p><button class="full" onclick="openLogin()">Login / Register</button><hr style="border-color:var(--line);margin:18px 0"><button class="secondary full" onclick="openAdmin()">⚙️ Admin Panel Preview</button></div></section>
+<section id="admin" class="hidden"><h2>⚙️ Admin Panel Preview</h2><div class="notice"><b>ডেমো অ্যাডমিন প্যানেল</b><p class="muted">এটি এখনো পাসওয়ার্ড-সুরক্ষিত নয় এবং শুধু নমুনা। অনলাইনে প্রকাশ করার আগে আসল অ্যাডমিন অথেনটিকেশন যুক্ত করতে হবে।</p></div><div class="card"><h3>নতুন ID যোগ করুন</h3><input id="pname" placeholder="ID-এর নাম"><input id="puid" placeholder="UID"><input id="pprice" type="number" placeholder="দাম (৳)"><textarea id="pdesc" placeholder="বিস্তারিত"></textarea><button class="full" onclick="addProduct()">ডেমো পণ্য যোগ করুন</button></div></section>
+</main>
+<nav class="bottom">
+<button class="active" data-page="home" onclick="show('home',this)"><b>🏠</b>Home</button>
+<button data-page="notices" onclick="show('notices',this)"><b>📢</b>Notice</button>
+<button data-page="orders" onclick="show('orders',this)"><b>🛒</b>Orders</button>
+<button data-page="support" onclick="show('support',this)"><b>💬</b>Support</button>
+<button data-page="profile" onclick="show('profile',this)"><b>👤</b>Profile</button>
+</nav>
+<div id="modal" class="modal hidden" onclick="if(event.target===this)closeModal()"><div class="modalbox"><div class="topline"><h2 id="mtitle">ID Details</h2><button class="close" onclick="closeModal()">✕</button></div><div id="mbody"></div></div></div>
+<script>
+let items=[
+{id:1,name:"Premium Collection ID",uid:"UID: Demo-1001",price:1500,desc:"Level ও collection-এর বিস্তারিত এখানে যোগ হবে। এটি শুধু নমুনা পণ্য।",emoji:"👑"},
+{id:2,name:"Evo Gun Collection ID",uid:"UID: Demo-1002",price:2200,desc:"Gun collection-এর বিবরণ এখানে দেখানো হবে।",emoji:"🔫"},
+{id:3,name:"Rare Dress Collection ID",uid:"UID: Demo-1003",price:900,desc:"Dress ও emote collection-এর বিবরণ এখানে দেখানো হবে।",emoji:"🎭"}
+];let orders=[];
+function render(){document.getElementById('products').innerHTML=items.map(p=>`<article class="product"><div class="art">${p.emoji}</div><div class="info"><h3>${esc(p.name)}</h3><small>${esc(p.uid)}</small><p class="price">৳${p.price.toLocaleString('en-BD')}</p><button class="secondary" onclick="details(${p.id})">Details / বিস্তারিত</button><button onclick="order(${p.id})">Order / অর্ডার</button></div></article>`).join('');filterProducts()}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function filterProducts(){let q=(document.getElementById('search')?.value||'').toLowerCase();document.querySelectorAll('.product').forEach((el,i)=>el.classList.toggle('hidden',!JSON.stringify(items[i]).toLowerCase().includes(q)))}
+function show(id,btn){document.querySelectorAll('main section').forEach(s=>s.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');document.querySelectorAll('.bottom button').forEach(b=>b.classList.toggle('active',b===btn));window.scrollTo(0,0)}
+function modal(title,body){document.getElementById('mtitle').textContent=title;document.getElementById('mbody').innerHTML=body;document.getElementById('modal').classList.remove('hidden')}
+function closeModal(){document.getElementById('modal').classList.add('hidden')}
+function details(id){let p=items.find(x=>x.id===id);modal('🎮 ID Details',`<div class="card"><h3>${esc(p.name)}</h3><p class="muted">${esc(p.uid)}</p><div class="price">৳${p.price.toLocaleString('en-BD')}</div><p class="muted">${esc(p.desc)}</p><small>ডেমো: এখানে বাস্তব অ্যাকাউন্টের গোপন তথ্য দেবেন না।</small><button class="full" style="margin-top:14px" onclick="closeModal();order(${p.id})">Order This ID</button></div>`)}
+function order(id){let p=items.find(x=>x.id===id);modal('🛒 Place Order',`<div class="card"><b>${esc(p.name)}</b><p class="price">৳${p.price.toLocaleString('en-BD')}</p><label>ফোন নম্বর</label><input id="ophone" placeholder="01XXXXXXXXX"><label>Payment method (ডেমো)</label><select id="pmethod"><option>Cash / Manual confirmation</option><option>bKash (not connected)</option><option>Nagad (not connected)</option><option>Rocket (not connected)</option></select><label>Transaction ID (ঐচ্ছিক, ডেমো)</label><input id="trx" placeholder="ডেমোতে আসল তথ্য দেবেন না"><label>নোট</label><textarea id="onote" placeholder="অতিরিক্ত তথ্য"></textarea><button class="full" onclick="place(${p.id})">Confirm Demo Order</button><p class="muted">এটি শুধু প্রোটোটাইপ। টাকা পাঠাবেন না; পেমেন্ট সংযুক্ত নয়।</p></div>`)}
+function place(id){let phone=document.getElementById('ophone').value.trim();if(!/^01[0-9]{9}$/.test(phone)){alert('সঠিক ১১ সংখ্যার বাংলাদেশি মোবাইল নম্বর দিন।');return}let p=items.find(x=>x.id===id);orders.unshift({no:'DEMO-'+Date.now().toString().slice(-8),name:p.name,price:p.price,status:'Pending / অপেক্ষমাণ'});document.getElementById('orderlist').innerHTML=orders.map(o=>`<div class="notice"><b>${o.no}</b><p>${esc(o.name)}</p><p class="price">৳${o.price}</p><span class="pill">${o.status}</span></div>`).join('');closeModal();show('orders');alert('ডেমো অর্ডার তৈরি হয়েছে। এটি বাস্তব অর্ডার নয়।')}
+function sendMessage(){let m=document.getElementById('message').value.trim();if(!m){alert('আগে মেসেজ লিখুন।');return}document.getElementById('supportmsg').textContent='ডেমোতে মেসেজটি পাঠানো হয়নি। আসল সাপোর্ট পরের ধাপে যুক্ত হবে।'}
+function openLogin(){modal('Login / Register',`<p class="muted">আসল লগইন চালু করতে পরের ধাপে নিরাপদ authentication যুক্ত করব।</p><input placeholder="Email" disabled><input placeholder="Password" disabled><button class="full" onclick="closeModal()">ঠিক আছে</button>`)}
+function openAdmin(){closeModal();show('admin')}
+function addProduct(){let name=document.getElementById('pname').value.trim(),uid=document.getElementById('puid').value.trim(),price=Number(document.getElementById('pprice').value),desc=document.getElementById('pdesc').value.trim();if(!name||!uid||!price||price<1){alert('নাম, UID এবং সঠিক দাম দিন।');return}items.unshift({id:Date.now(),name,uid:'UID: '+uid,price,desc,emoji:'🎮'});render();document.getElementById('pname').value='';document.getElementById('puid').value='';document.getElementById('pprice').value='';document.getElementById('pdesc').value='';alert('এই ব্রাউজারের ডেমোতে পণ্য যোগ হয়েছে; স্থায়ীভাবে সংরক্ষিত নয়।')}
+render();
+</script>
+</body></html>
